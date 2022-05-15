@@ -9,8 +9,8 @@ public:
 	MeshOperation();
 	~MeshOperation();
 
-	using ConvexHullOperation::ComputeCenterPoint;
-	using ConvexHullOperation::ComputeAllFaceParams;
+	// using ConvexHullOperation::ComputeCenterPoint;
+	// using ConvexHullOperation::ComputeAllFaceParams;
 
 	inline void VectorNormalization(float &fX, float &fY, float &fZ);
 
