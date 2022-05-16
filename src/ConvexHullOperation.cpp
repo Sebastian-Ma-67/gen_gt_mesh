@@ -140,7 +140,7 @@ void ConvexHullOperation::CaculateTriangleNormal(const pcl::PointXYZ &oPZero,
 	if (fLen == 0.0)
 	{
 		// throw Exception();
-		std::cout << "something wrong on normal vector calculation!" << std::endl;
+		// std::cout << "something wrong on normal vector calculation!" << std::endl;
 		oFacePara.oNormal(0) = 0.0f;
 		oFacePara.oNormal(1) = 0.0f;
 		oFacePara.oNormal(2) = 0.0f;

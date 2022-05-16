@@ -21,7 +21,7 @@ def compute_normals(cloud, w, h):
     
     normal_map = gen_normal_map.gen_normal_map(scan_x, scan_y, scan_z)
 
-    iCount = current_vertex.size
+    iCount = scan_x.size
     cloud.points = o3d.utility.Vector3dVector(current_vertex.reshape(iCount, 3))
     cloud.normals = o3d.utility.Vector3dVector(normal_map.reshape(iCount, 3))
     cloud.remove_non_finite_points()
