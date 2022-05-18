@@ -58,12 +58,31 @@ void translateNormalPCL2Raw(pcl::PointCloud<pcl::PointNormal> &vCloud,
 	// printf("start translateNormalPCL2Raw\n");
 	// printf("vCloud.points.size() = %d\n", vCloud.points.size());
 
+	float *p = pRawCloud;
+
 	for (int i = 0; i < vCloud.points.size(); i++)
 	{
 		// printf("%d-", i);
-		pRawCloud[3 * i] = vCloud.points[i].normal_x;
-		pRawCloud[3 * i + 1] = vCloud.points[i].normal_y;
-		pRawCloud[3 * i + 2] = vCloud.points[i].normal_z;
+		// pRawCloud[3 * i] = vCloud.points[i].normal_x;
+		// pRawCloud[3 * i + 1] = vCloud.points[i].normal_y;
+		// pRawCloud[3 * i + 2] = vCloud.points[i].normal_z;
+
+		*p = vCloud.points[i].normal_x;
+		p += 1;
+		*p = vCloud.points[i].normal_y;
+		p += 1;
+		*p = vCloud.points[i].normal_z;
+		p += 1;
+	}
+
+	for (int i = 0; i < vCloud.points.size(); i++)
+	{
+		*p = vCloud.points[i].x;
+		p += 1;
+		*p = vCloud.points[i].y;
+		p += 1;
+		*p = vCloud.points[i].z;
+		p += 1;
 	}
 }
 

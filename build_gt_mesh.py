@@ -122,11 +122,7 @@ def main(
         )
         source.transform(gt_poses[idx])
         cloud_map += source
-
-    print("Running Poisson Surface Reconstruction, go grab a coffee")
-    o3d.utility.set_verbosity_level(o3d.utility.VerbosityLevel.Debug)
-
-    mesh, _ = run_poisson(cloud_map, depth, -1, min_density)
+    
     map_name = (
         "gt_"
         + dataset_name
@@ -139,12 +135,21 @@ def main(
         + "_"
         + normals
     )
+
+    print("Saving point cloud with normal")
+    pcd_file = os.path.join(out_dir, map_name + ".pcd")
+    o3d.io.write_point_cloud(pcd_file, cloud_map)
+
+    print("Running Poisson Surface Reconstruction, go grab a coffee")
+    o3d.utility.set_verbosity_level(o3d.utility.VerbosityLevel.Debug)
+
+    mesh, _ = run_poisson(cloud_map, depth, -1, min_density)
+
     mesh_file = os.path.join(out_dir, map_name + "_mesh.ply")
     print("Saving mesh to " + mesh_file)
     o3d.io.write_triangle_mesh(mesh_file, mesh)
     if visualize:
         o3d.visualization.draw_geometries([mesh])
-
 
 if __name__ == "__main__":
     o3d.utility.set_verbosity_level(o3d.utility.VerbosityLevel.Info)

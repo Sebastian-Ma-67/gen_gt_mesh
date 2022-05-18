@@ -11,14 +11,14 @@ py::array_t<float> gen_normal_map(const py::array_t<float> &scan_x,
                                   const py::array_t<float> &scan_z)
 {
 
-    printf("start gen_normal_map\n");
+    // printf("start gen_normal_map\n");
 
     pybind11::buffer_info buf1 = scan_x.request();
     pybind11::buffer_info buf2 = scan_y.request();
     pybind11::buffer_info buf3 = scan_z.request();
 
     /*  allocate the buffer */
-    py::array_t<float> normal_map_buffer = py::array_t<float>(buf1.size * 3);
+    py::array_t<float> normal_map_buffer = py::array_t<float>(buf1.size * 3 * 2);
     pybind11::buffer_info buf4 = normal_map_buffer.request();
 
     auto *pointX = (float *)buf1.ptr;
