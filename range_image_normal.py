@@ -13,7 +13,11 @@ def compute_normals(cloud, w, h):
 
     current_vertex = np.asarray(cloud.points)
     depth = np.linalg.norm(current_vertex, axis=1)
-    current_vertex = current_vertex[(depth > 0.01) & (depth < 50)]
+
+    current_vertex = current_vertex[(depth > 0.01) & (depth < 20)]
+    flag = current_vertex[:, 2] > -2
+    current_vertex = current_vertex[flag]
+    
     # get scan components
     scan_x = current_vertex[:, 0]
     scan_y = current_vertex[:, 1]

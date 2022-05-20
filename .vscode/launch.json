@@ -13,7 +13,8 @@
             "stopAtEntry": true,
             "args": [
                 "-d",
-                "${workspaceFolder}/data/mai_city/ply/",
+                // "${workspaceFolder}/data/mai-city/ply/",
+                "${workspaceFolder}/data/Map_PCNormal_Cloud.ply",
                 "-s",
                 "00",
                 "-n",

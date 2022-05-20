@@ -143,6 +143,7 @@ def main(
     print("Running Poisson Surface Reconstruction, go grab a coffee")
     o3d.utility.set_verbosity_level(o3d.utility.VerbosityLevel.Debug)
 
+    min_density = 0.01
     mesh, _ = run_poisson(cloud_map, depth, -1, min_density)
 
     mesh_file = os.path.join(out_dir, map_name + "_mesh.ply")
